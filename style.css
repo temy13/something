@@ -4,7 +4,15 @@ body {
   background: #eee;
 }
 
+
+
 .top{
+    overflow: scroll;
+    height: 80%;
+    position: absolute;
+    bottom: 0;
+}
+.catch{
   padding-top: 250px;
   display: -webkit-box;
     display: -ms-flexbox;
@@ -18,8 +26,7 @@ body {
     justify-content: center;
     text-align: center;
 }
-
-.top h1{
+.top h1, .catch h1{
   position: relative;
   opacity: 1;
   margin-bottom: 2rem;
@@ -27,7 +34,7 @@ body {
   width: 100%;
 }
 
-.top h2{
+.top h2, .top h2{
   text-transform: uppercase;
     letter-spacing: .15em;
     word-spacing: .25em;
@@ -303,4 +310,6 @@ body {
 /* about */
 .block{
   margin-bottom:12px;
+  width: 100%;
+  text-align: left;
 }
