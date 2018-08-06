@@ -1,19 +1,66 @@
-<!DOCTYPE html>
-<html>
 <head>
-<meta charset="UTF-8">
-<title>TipsNote : GitHub Pages Sample</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/marx/2.0.4/marx.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <!-- Barba -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script>
+
+  <script src="anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/velocity/1.2.2/velocity.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.1/TweenMax.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="main.js"></script>
+
 </head>
-
 <body>
-<main>
-  <h1>GitHub Pages のサンプルです</h1>
-  <a href="http://www.tam-tam.co.jp/tipsnote/"><button>TipsNote に戻る</button></a>
-</main>
 
-<script>
-console.log('GitHub Pages Sample');
-</script>
+  <div id="barba-wrapper">
+    <div class="barba-container" data-namespace="main">
+          <div id="box" class="box"></div>
+          <div id="box2" class="box"></div>
+          <div id="nav-toggle">
+            <div>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <nav id="global-nav">
+            <ul>
+              <li>
+                <a
+                  href="index.html"
+                  class="animsition-link"
+                  data-animsition-out-class="overlay-slide-out-right">
+                <div class="title">HOME</div>
+              </a></li>
+              <li>
+                <a
+                  href="about.html"
+                  class="animsition-link"
+                  data-animsition-out-class="overlay-slide-out-right">
+                <div class="title">会社概要</div>
+              </a></li>
+            </ul>
+          </nav>
+          <div id="nav-bg"></div>
+          <div id="nav-bg-inner"></div>
+          <div id="nav-bg-fix"></div>
+
+
+      <div class="top">
+        <h1>Digital design with a playful twist</h1>
+        <h2>Dive into digital</h2>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
 </body>
-</html>
+<script src="mybarba.js"></script>
