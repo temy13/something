@@ -1,3 +1,4 @@
+/* base: efbc22 */
 @import url(http://fonts.googleapis.com/css?family=Lato);
 body {
   font-family: 'Lato', sans-serif;
@@ -100,7 +101,7 @@ body {
   padding: 10px 0;
 }
 #global-nav a:hover {
-  color:#D4AF37;
+  color:#efbc22;
 }
 #global-nav .title{
   display: block;
@@ -183,7 +184,7 @@ body {
   right: 40px;
   display: block;
   position: fixed;
-  background: #D4AF37;
+  background: #efbc22;
   -webkit-border-radius: 50%;
   border-radius: 50%;
   -webkit-backface-visibility: hidden;
@@ -307,7 +308,7 @@ body {
 #box, #box2{
   width: 100%;
   height: 200%;
-  background-color:#D4AF37;
+  background-color:#efbc22;
   position: absolute;
   display: block;
   right:0px;
