@@ -20,7 +20,7 @@
       circle(size, "#nav-bg", null, 0, null)
       circle(size, "#nav-bg-inner", function(){
         $("#nav-bg-inner").css("background-color", "#ffffff")
-        $("#nav-bg-fix").css("background-color", "#D4AF37")
+        $("#nav-bg-fix").css("background-color", "#efbc22")
       }, 400, function(){
         $("#nav-bg-fix").css("background-color", "transparent")
       })
