@@ -71,7 +71,29 @@
     // });
     $(document).ready(function(){
       boots()
+      // try {
+      // 		$('.rip').ripples({
+      // 			resolution: 512,
+      // 			dropRadius: 20, //px
+      // 			perturbance: 0.04,
+      // 		});
+      // 	}
+      // 	catch (e) {
+      // 		$('.error').show().text(e);
+      // 	}
+      anime({
+        targets: '#top-img',
+        scale: {
+                value:[0,1], // 2倍サイズになる
+                duration: 500, // 0.5秒間アニメーションする
+                easing: 'easeOutQuad'
+            },
+      });
+      console.log($('body'))
     });
+
+
+
 
 
 })(jQuery);
