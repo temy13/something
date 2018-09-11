@@ -48,7 +48,7 @@
             small()
           }
       });
-      if(location.pathname.startsWith("/index")){
+      // if(location.pathname.startsWith("/index")){
         anime({
           targets: '#top-img',
           scale: {
@@ -57,7 +57,7 @@
                   easing: 'easeOutQuad'
               },
         });
-      }
+      // }
     }
 
     // Barba.Dispatcher.on('newPageReady', function () {

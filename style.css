@@ -3,7 +3,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lato);
 @font-face {
   font-family: 'BellMT';
-  /* src: url("/fonts/Belleza-Regular.ttf"); */
+  src: url("/fonts/Belleza-Regular.ttf");
 }
 
 body {
