@@ -27,7 +27,6 @@
     }
 
     small = function(n){
-      console.log("sma")
       n = n || 75
       circle(12, "#nav-bg-inner", null, 0, function(){
         $("#nav-bg-inner").css("background-color", "transparent")
@@ -49,6 +48,16 @@
             small()
           }
       });
+      if(location.pathname.startsWith("/index")){
+        anime({
+          targets: '#top-img',
+          scale: {
+                  value:[0,1],
+                  duration: 1000,
+                  easing: 'easeOutQuad'
+              },
+        });
+      }
     }
 
     // Barba.Dispatcher.on('newPageReady', function () {
@@ -81,15 +90,7 @@
       // 	catch (e) {
       // 		$('.error').show().text(e);
       // 	}
-      anime({
-        targets: '#top-img',
-        scale: {
-                value:[0,1], // 2倍サイズになる
-                duration: 500, // 0.5秒間アニメーションする
-                easing: 'easeOutQuad'
-            },
-      });
-      console.log($('body'))
+
     });
 
 
