@@ -5,6 +5,7 @@ Barba.Prefetch.init();
 var PageTransition = Barba.BaseTransition.extend({
     start: function() {
       var _this = this;
+
       // トランジション開始と同時にnewContainerLoadingメソッドも呼ばれ、
       // トランジション用のメソッドとどちらもresolve()であればthen()が呼ばれる。
       Promise
@@ -14,15 +15,27 @@ var PageTransition = Barba.BaseTransition.extend({
     loadOut: function(resolve) {
 
         var deferred = Barba.Utils.deferred();
-        $("#box").velocity(
-            {
-              right:0
-            }, {
-    		      duration: 1000,
-    		      easing: "easeInCubic",
-    		      complete : function() {
-    		         deferred.resolve();
-    		    }
+        // $("#box").velocity(
+        //     {
+        //       right:-100
+        //     }, {
+    		//       duration: 1000,
+    		//       easing: "easeInCubic",
+    		//       complete : function() {
+    		//          deferred.resolve();
+    		//     }
+        // });
+        anime({
+            targets: "#box",
+            right: 0,
+            easing: 'easeInCubic',
+            duration: 1000,
+            begin: function(){
+              $('body').addClass('normal');
+            },
+            complete: function(){
+              deferred.resolve();
+            }
         });
         return deferred.promise;
     },
@@ -38,6 +51,7 @@ var PageTransition = Barba.BaseTransition.extend({
             duration: 500,
             begin: function(){
               $('body').removeClass('open');
+              $('body').addClass('normal');
             },
             complete: function(){
               boots()

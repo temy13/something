@@ -57,6 +57,7 @@
                   easing: 'easeOutQuad'
               },
         });
+        $("body").addClass("normal")
       // }
     }
 
