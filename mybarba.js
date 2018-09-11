@@ -14,6 +14,7 @@ var PageTransition = Barba.BaseTransition.extend({
     loadOut: function(resolve) {
 
         var deferred = Barba.Utils.deferred();
+        $("#box").css({"background-color":"#efbc22"})
         $("#box").velocity(
             {
               right:0
@@ -22,7 +23,6 @@ var PageTransition = Barba.BaseTransition.extend({
     		      easing: "easeInCubic",
     		      complete : function() {
     		         deferred.resolve();
-                 // console.log("out")
     		    }
         });
         return deferred.promise;
@@ -30,7 +30,7 @@ var PageTransition = Barba.BaseTransition.extend({
     loadIn: function() {
         var _this = this;
 
-
+        $("#box").css({"background-color":"#efbc22"})
         anime({
             //targets: this.newContainer,
             targets: "#box",
@@ -39,6 +39,7 @@ var PageTransition = Barba.BaseTransition.extend({
             easing: 'linear',
             duration: 500,
             begin: function(){
+              $("#box").css({"background-color":"#efbc22"})
               $('body').removeClass('open');
             },
             complete: function(){
