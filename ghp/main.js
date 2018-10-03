@@ -38,9 +38,9 @@
       //これ危ないかもだけど発動タイミング的にセーフなはず。
       if ($("#box").css("right") != "-100%"){
         $("#box").css("right", "-100%")
+        $("#box").css({"background-color":"#efbc22"})
       }
       $('#nav-toggle').click(function(){
-          console.log("click")
           $('body').toggleClass('open');
           if($('body').hasClass("open")){
             large()
@@ -48,7 +48,7 @@
             small()
           }
       });
-      if(location.pathname.startsWith("/index")){
+      // if(location.pathname.startsWith("/index")){
         anime({
           targets: '#top-img',
           scale: {
@@ -57,7 +57,8 @@
                   easing: 'easeOutQuad'
               },
         });
-      }
+        $("body").addClass("normal")
+      // }
     }
 
     // Barba.Dispatcher.on('newPageReady', function () {

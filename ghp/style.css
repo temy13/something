@@ -1,9 +1,9 @@
 /* base: efbc22 */
 
-@import url(http://fonts.googleapis.com/css?family=Lato);
+@import url(https://fonts.googleapis.com/css?family=Lato);
 @font-face {
   font-family: 'BellMT';
-  src: url("http://localhost:8000/fonts/Belleza-Regular.ttf");
+  src: url("/fonts/Belleza-Regular.ttf");
 }
 
 body {
@@ -40,7 +40,7 @@ body {
   justify-content: center;
   text-align: center;
   pointer-events: none;
-  font-family: BellMT;
+  /* font-family: BellMT; */
 }
 
 .top h1, .catch h1 {
@@ -344,19 +344,25 @@ body {
   overflow: hidden;
 }
 
+
 #box, #box2 {
   width: 100%;
   height: 200%;
-  background-color: #efbc22;
+  background-color: transparent;
+  /* background-color: #efbc22; */
   position: absolute;
   display: block;
   right: 0px;
-  /* bottom: -25%; */
   top: -50%;
   z-index: 200;
   border: 1px solid transparent;
   border-radius: 2000px / 5000px;
 }
+
+.normal #box, .normal #box2{
+  background-color: #efbc22;
+}
+
 
 #box2 {
   right: 0;
