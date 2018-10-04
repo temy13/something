@@ -1,0 +1,4 @@
+create table keywords ( id integer auto_increment primary key, keyword varchar(255), count integer, timing_type varchar(255), interval_time time, manual_time_1 time, manual_time_2 time, manual_time_3 time, manual_time_4 time, manual_time_5 time, manual_time_6 time, manual_time_7 time, manual_time_8 time, manual_time_9 time, manual_time_10 time, manual_time_11 time, manual_time_12 time, manual_time_13 time, manual_time_14 time, manual_time_15 time, manual_time_16 time, manual_time_17 time, manual_time_18 time, manual_time_19 time, manual_time_20 time, manual_time_21 time, manual_time_22 time, manual_time_23 time, manual_time_0 time, twitter_user_id varchar(255));
+
+
+create table twitter_user ( id integer auto_increment primary key, twitter_user_id varchar(255), oauth_token varchar(255), oauth_token_secret varchar(255) );

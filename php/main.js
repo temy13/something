@@ -1,10 +1,15 @@
 $(document).ready(function(){
-  //alert("Hi")
-  timeSet("auto")
+  $(".timing-set").hide()
+  if($("input:checked").attr("id") == "timing-type-btn-auto"){
+    timeSet("auto")
+  }else if($("input:checked").attr("id") == "timing-type-btn-manual"){
+    timeSet("manual")
+  }
 });
 
 
 function timeSet(p){
-    $(".timing-set").hide()
-    $(".timing-" + p).show()
+  console.log($("input:checked").attr("id"))
+  $(".timing-set").hide()
+  $(".timing-" + p).show()
 }
