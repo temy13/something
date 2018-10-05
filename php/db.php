@@ -1,5 +1,6 @@
 <?php
-$mysqli = new mysqli("127.0.0.1" , "rtbotuser" , "password" , "rtbotdb");
+require_once 'common.php';
+$mysqli = new mysqli(DB_HOST , DB_USER , DB_PASS , DB_DATABASE);
 if ($mysqli->connect_error) {
     error_log($mysqli->connect_error);
     exit;
