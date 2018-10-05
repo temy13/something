@@ -55,7 +55,7 @@ if __name__ == '__main__':
     df = get_codes()
     for index, item in df[:1].iterrows():
         code = item["code"]
-        #download(code)
+        download(code)
 
         for fn in glob("data/%s/*.zip" % code):
             #{fn:str}
