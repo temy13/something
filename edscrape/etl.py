@@ -19,6 +19,8 @@ def extract_dir(dir, d):
             d = extract_dir(path, d)
             continue
         ext = path.split(".")[-1]
+        if ext in ["jpg", "png"]:
+            continue
         if ext not in ["xml", "htm", "xsd", "xbrl", "csv"]:
             print(ext)
             continue
