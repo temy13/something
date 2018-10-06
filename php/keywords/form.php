@@ -1,11 +1,11 @@
-<input type="hidden" name="twitter_user_id" value="<?php echo $user->id; ?>">
+<input type="hidden" name="twitter_user_id" value="<?php echo $twitter_user_id; ?>">
 <div class="form-group">
   <label>指定するキーワード</label>
   <input type = "text" name ="keyword" class="form-control" placeholder="キーワード" value="<?php echo $row['keyword'] ?>">
 </div>
 <div class="form-group">
   <label>RTするツイートの数</label>
-  <input type = "number" name ="count" class="form-control" max=10 min = 1 value="<?php echo $row['count'] ?>">
+  <input type = "number" name ="count" class="form-control" max=10 min = 1 value="<?php echo ($row['count'] ? $row['count'] : 1) ?>">
 </div>
 <div class="form-group">
   <label>タイミング</label>
