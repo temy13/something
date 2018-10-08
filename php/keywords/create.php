@@ -38,7 +38,7 @@ $stmt->bind_param('ssisssssssssssssssssssssssssss', $twitter_user_id, $keyword, 
 $res = $stmt->execute();
 $stmt->close();
 
-retweet($mysqli, $twitter_user_id, $keyword, $count, $id)
+retweet($mysqli, $twitter_user_id, $keyword, $count, $id);
 
 $mysqli->close();
 

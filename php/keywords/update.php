@@ -4,7 +4,7 @@ session_start();
 
 require_once '../common.php';
 require_once '../db.php';
-require_once '../retweet.php'
+require_once '../retweet.php';
 
 $stmt = $mysqli->prepare("UPDATE keywords
     SET keyword = ?, count = ?, timing_type = ?, interval_time = ?,
@@ -41,9 +41,10 @@ if(!$res){
   var_dump($mysqli->error);
 }
 $stmt->close();
-$mysqli->close();
 
-retweet($mysqli, $twitter_user_id, $keyword, $count, $id)
+retweet($mysqli, $twitter_user_id, $keyword, $count, $id);
+
+$mysqli->close();
 
 header('Location: '.HOST.'/mypage.php');
 exit();

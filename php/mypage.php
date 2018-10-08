@@ -5,7 +5,7 @@ session_start();
 require_once 'common.php';
 require_once 'twitteroauth/autoload.php';
 require_once 'db.php';
-require_once 'keywords/select.php'
+require_once 'keywords/select.php';
 require_once 'twitter_user/find_or_create.php';
 
 use Abraham\TwitterOAuth\TwitterOAuth;
@@ -29,7 +29,7 @@ find_or_create($mysqli, $user_id, $access_token['oauth_token'], $access_token['o
 //$row = $stmt->fetch_assoc();
 //$stmt->close();
 
-$row = select($mysqli, $twitter_user_id)
+$row = select($mysqli, $twitter_user_id);
 
 $mysqli->close();
 ?>
