@@ -21,7 +21,7 @@ while ($row = $result->fetch_assoc()) {
   } else if ($row["timing_type"] == "manual" && manual_retweet_check($row)){
     continue;
   }
-  retweet($mysqli, $row["twitter_user_id"], $row["keyword"], $row["count"],$row["id"]);
+  retweet($mysqli, $row["twitter_user_id"], $row["keyword"], $row["count"],$row["id"], $log=True);
 
 }
 

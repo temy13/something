@@ -4,9 +4,7 @@
 
     <h2>Twitter ログイン</h2>
 
-    <?php
-    echo "<a href='http://rtbot.ne.je/login.php'>ログインへ</a>";
-    ?>
+    <?php echo "<a href='http://rtbot.ne.je/login.php'>ログインへ</a>";?>
 
   </div>
 </body>
