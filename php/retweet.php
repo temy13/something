@@ -7,7 +7,7 @@ function retweet($mysqli, $twitter_user_id, $keyword, $count, $id){
 
 
 function retweet_exec($mysqli, $twitter_user_id, $keyword, $count){
-  $stmt = $mysqli->prepare ( 'select oauth_token, oauth_token_secret from twitter_user where twitter_user_id = ?' );
+  $stmt = $mysqli->prepare ( 'select allowed, oauth_token, oauth_token_secret from twitter_user where twitter_user_id = ?' );
   if(!$stmt){
     var_dump($mysqli->error);
   }
@@ -16,10 +16,12 @@ function retweet_exec($mysqli, $twitter_user_id, $keyword, $count){
   //$result = $stmt->get_result();
   //$row = $result->fetch_assoc();
   $stmt->store_result();
-  $stmt->bind_result($oauth_token, $oauth_token_secret);
+  $stmt->bind_result($allowed, $oauth_token, $oauth_token_secret);
 
   $stmt->fetch();
-
+  if (!$allowed){
+    return;
+  }
   $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $oauth_token, $oauth_token_secret);
   $tweets_params = ['q' => $keyword ,'count' => $count];
   $tweets = $connection->get('search/tweets', $tweets_params)->statuses;

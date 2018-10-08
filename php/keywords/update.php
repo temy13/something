@@ -37,11 +37,9 @@ $stmt->bind_param('sissssssssssssssssssssssssssi', $keyword, $count, $timing_typ
     $mt[21], $mt[22], $mt[23], $id
 );
 $res = $stmt->execute();
-var_dump($res);
 if(!$res){
   var_dump($mysqli->error);
 }
-var_dump($stmt);
 $stmt->close();
 $mysqli->close();
 

@@ -19,7 +19,7 @@ $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oau
 //ユーザー情報をGET
 $user = $connection->get("account/verify_credentials");
 $twitter_user_id = $user->id;
-find_or_create($mysqli, $user_id, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+find_or_create($mysqli, $user_id, $access_token['oauth_token'], $access_token['oauth_token_secret'], $user->screen_name);
 
 //$stmt = $mysqli->prepare ( 'select * from keywords where twitter_user_id = ?' );
 //$stmt->bind_param('s', $user_id);

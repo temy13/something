@@ -12,7 +12,7 @@
 
 session_start();
 
-function find_or_create($mysqli, $twitter_user_id, $oauth_token, $oauth_token_secret){
+function find_or_create($mysqli, $twitter_user_id, $oauth_token, $oauth_token_secret, $screen_name){
 
   $stmt = $mysqli->prepare ( 'select count(*) from twitter_user where twitter_user_id = ?' );
   if (!$stmt){
@@ -20,20 +20,20 @@ function find_or_create($mysqli, $twitter_user_id, $oauth_token, $oauth_token_se
   }
   $stmt->bind_param('s', $twitter_user_id);
   $stmt->execute();
-  $stmt->bind_result($is_exist);
-  if($stmt->fetch()){
+  $stmt->bind_result($count);
+  if($count > 0){
     return;
   }
   $stmt->close();
 
   $stmt = $mysqli->prepare("INSERT INTO twitter_user(
-      twitter_user_id, oauth_token, oauth_token_secret
-    ) VALUES (?, ?, ?)");
+      screen_name, twitter_user_id, oauth_token, oauth_token_secret
+    ) VALUES (?, ?, ?, ?)");
   if (!$stmt){
     var_dump($stmt);
     var_dump($mysqli->error);
-  }  
-  $stmt->bind_param('sss', $twitter_user_id, $oauth_token, $oauth_token_secret);
+  }
+  $stmt->bind_param('ssss', $screen_name, $twitter_user_id, $oauth_token, $oauth_token_secret);
   $stmt->execute();
   //$result = $stmt->get_result();
 }
