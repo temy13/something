@@ -35,6 +35,7 @@ $mysqli->close();
 ?>
 
 <?php require 'header.php'; ?>
+<?php require 'menu.php'; ?>
 
 <body>
   <div class="container">

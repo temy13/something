@@ -37,6 +37,8 @@ function retweet_exec($mysqli, $twitter_user_id, $keyword, $count,$log){
   }
 
   $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $oauth_token, $oauth_token_secret);
+  $block_ids = $connection->get('blocks/ids')->ids;
+  if($log){ var_dump($block_ids); }
   $c = 10;
   $tweet_id="";
   while($count > 0 && $c > 0){
