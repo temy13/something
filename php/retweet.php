@@ -37,6 +37,8 @@ function retweet_exec($mysqli, $twitter_user_id, $keyword, $count,$log){
   }
 
   $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $oauth_token, $oauth_token_secret);
+
+  if($log){ var_dump($oauth_token);var_dump($oauth_token_secret);var_dump($connection); }
   $block_ids = $connection->get('blocks/ids')->ids;
   if($log){ var_dump($block_ids); }
   $c = 10;
@@ -47,9 +49,12 @@ function retweet_exec($mysqli, $twitter_user_id, $keyword, $count,$log){
     $tweets = $connection->get('search/tweets', $tweets_params)->statuses;
     foreach ($tweets as $tweet) {
       $tweet_id = $tweet->id_str;
-      if($log){ var_dump($tweet->user->id); var_dump($tweet_id); }
+      // if($log){ var_dump($tweet->user->id); var_dump($tweet_id); }
 
       if(in_array($tweet_id, $retweets)){
+        continue;
+      }
+      if(in_array($tweet->user->id, $block_ids)){
         continue;
       }
 
