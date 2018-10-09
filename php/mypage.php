@@ -42,7 +42,8 @@ $mysqli->close();
 
     <h2>設定</h2>
     <p>
-      <div><a href="https://momokogumi.com/twitter-api">鍵の取得方法</a></div>
+      RTするために、あなたのTwitterApllicationを作成し、Keyを取得してください
+      <div><a href="https://momokogumi.com/twitter-api">作成方法</a></div>
       <div><a href="https://apps.twitter.com/">鍵の取得</a></div>
       なお、callback urlは<span>http://rtbot.ne.je</span>を指定してください
     </p>
