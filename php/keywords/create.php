@@ -4,7 +4,8 @@ session_start();
 
 require_once '../common.php';
 require_once '../db.php';
-require_once '../retweet.php'
+require_once '../retweet.php';
+require_once '../twitter_user/update.php';
 
 $stmt = $mysqli->prepare("INSERT INTO keywords(
     twitter_user_id, keyword, count, timing_type, interval_time,
@@ -38,9 +39,15 @@ $stmt->bind_param('ssisssssssssssssssssssssssssss', $twitter_user_id, $keyword, 
 $res = $stmt->execute();
 $stmt->close();
 
+tw_update($mysqli, $_GET['consumer_key'], $_GET['consumer_secret'], $_GET['access_token'], $_GET['access_token_secret'], $_GET['twitter_user_record_id']);
+
 retweet($mysqli, $twitter_user_id, $keyword, $count, $id);
 
+
+
 $mysqli->close();
+
+
 
 header('Location: '.HOST.'/mypage.php');
 exit();
