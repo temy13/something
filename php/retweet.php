@@ -47,7 +47,7 @@ function retweet_exec($mysqli, $twitter_user_id, $keyword, $count,$log){
     $tweets = $connection->get('search/tweets', $tweets_params)->statuses;
     foreach ($tweets as $tweet) {
       $tweet_id = $tweet->id_str;
-      if($log){ var_dump($tweet_id); }
+      if($log){ var_dump($tweet->user->id); var_dump($tweet_id); }
 
       if(in_array($tweet_id, $retweets)){
         continue;

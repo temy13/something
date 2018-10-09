@@ -3,7 +3,7 @@
 require_once 'common.php';
 require_once 'twitteroauth/autoload.php';
 require_once 'db.php';
-require_once 'retweet.php'
+require_once 'retweet.php';
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 
