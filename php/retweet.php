@@ -85,7 +85,7 @@ function after_exec($mysqli, $id){
       SET last_exec = ?
       WHERE id = ?
     ");
-  $s = date("Y/m/d H:i:s")
+  $s = date("Y/m/d H:i:s");
   $stmt->bind_param('si', $s, intval($id));
   if(!$stmt->execute()){
     var_dump($mysqli->error);
