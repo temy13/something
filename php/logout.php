@@ -26,7 +26,7 @@ session_destroy();
 
     <?php
     echo "ログアウトしました。";
-    echo "<a href='http://localhost/login.php'>ログインへ</a>";
+    echo "<a href='http://rtbot.ne.je/login.php'>ログインへ</a>";
     ?>
   </div>
 </body>
