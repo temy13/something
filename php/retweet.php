@@ -6,7 +6,7 @@ require_once 'twitteroauth/autoload.php';
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 
-function retweet($mysqli, $twitter_user_id, $keyword, $count, $id, $log=True){
+function retweet($mysqli, $twitter_user_id, $keyword, $count, $id, $log=False){
   retweet_exec($mysqli, $twitter_user_id, $keyword, $count,$log);
   after_exec($mysqli, $id);
 }
@@ -47,21 +47,25 @@ function retweet_exec($mysqli, $twitter_user_id, $keyword, $count,$log){
   }
   $c = 10;
   $tweet_id="";
+  $now = new DateTime();
   while($count > 0 && $c > 0){
     $c -= 1;
-    $tweets_params = ['q' => $keyword ,'count' => 100, 'max_id' => $tweet_id];
+    $tweets_params = ['q' => $keyword ,'count' => 100, 'max_id' => $tweet_id, 'result_type' => 'recent'];
     $tweets = $connection->get('search/tweets', $tweets_params)->statuses;
     foreach ($tweets as $tweet) {
       $tweet_id = $tweet->id_str;
       // if($log){ var_dump($tweet->user->id); var_dump($tweet_id); }
-
       if(in_array($tweet_id, $retweets)){
         continue;
       }
       if(in_array($tweet->user->id, $block_ids)){
         continue;
       }
-
+      $t= new DateTime(date('Y-m-d H:i:s', strtotime($tweet->created_at)));
+      $h = ($now->getTimestamp() - $t->getTimestamp()) / 3600;
+      if($h > 23){
+        continue;
+      }
       $retweet = $connection->post('statuses/retweet/'.$tweet_id);
       $count-=1;
       insert_retweeted($mysqli, $twitter_user_id, $tweet_id);
@@ -81,8 +85,8 @@ function after_exec($mysqli, $id){
       SET last_exec = ?
       WHERE id = ?
     ");
-
-  $stmt->bind_param('si', date("Y/m/d H:i:s"), intval($id));
+  $s = date("Y/m/d H:i:s")
+  $stmt->bind_param('si', $s, intval($id));
   if(!$stmt->execute()){
     var_dump($mysqli->error);
   }

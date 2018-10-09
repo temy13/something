@@ -21,6 +21,7 @@ def get_codes():
     df = pd.read_csv("codes.csv")
     return df
 
+
 def generate_fp(code):
     fp = webdriver.FirefoxProfile()
     # 0:デスクトップ、1:システム規定のフォルファ、2:ユーザ定義フォルダ
@@ -37,8 +38,6 @@ def generate_fp(code):
     return fp
 
 
-
-
 def download(code):
     fp = generate_fp(code)
     driver = webdriver.Firefox(firefox_profile=fp)
@@ -47,7 +46,6 @@ def download(code):
     driver.get(url)
     for ele in driver.find_elements_by_xpath('//table[@class="resultTable table_cellspacing_1 table_border_1 mb_6"]//tr/td[7]//a'):
         ele.click()
-
     driver.close()
 
 
@@ -55,8 +53,7 @@ if __name__ == '__main__':
     df = get_codes()
     for index, item in df[:1].iterrows():
         code = item["code"]
-        download(code)
-
+        #download(code)
         for fn in glob("data/%s/*.zip" % code):
             #{fn:str}
             fn_str = etl.extract_str(fn, code)

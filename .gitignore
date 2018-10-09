@@ -1,6 +1,5 @@
 .DS_Store
 
 __pycache__
-
-edscape/data/*
-!edscape/data/.keep
+/edscrape/data/*
+!/edscrape/data/.keep
