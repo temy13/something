@@ -16,27 +16,27 @@ function retweet_exec($mysqli, $twitter_user_id, $keyword, $count,$log){
 
   $query = 'select * from twitter_user where twitter_user_id = '.$twitter_user_id;
   $result = $mysqli->query($query);
-  $row = $result->fetch_assoc();
+  $tw_row = $result->fetch_assoc();
 
-  if (!$row["allowed"]){
+  if (!$tw_row["allowed"]){
     return;
   }
+  $ck = $tw_row["consumer_key"] ? $tw_row["consumer_key"] : CONSUMER_KEY;
+  $cs = $tw_row["consumer_secret"] ? $tw_row["consumer_secret"] : CONSUMER_SECRET;
+  $at = $tw_row["access_token"] ? $tw_row["access_token"] : $tw_row["oauth_token"];
+  $as = $tw_row["access_token_secret"] ? $tw_row["access_token_secret"] : $tw_row["oauth_token_secret"];
 
-  if($log){ var_dump($row["screen_name"]); }
+  if($log){ var_dump($tw_row["screen_name"]); }
   $retweets = [];
   $query = 'select * from retweeted where twitter_user_id = '.$twitter_user_id;
   $result = $mysqli->query($query);
   while ($row = $result->fetch_assoc()) {
     $retweets[] = $row["tweet_id"];
   }
-  $ck = $row["consumer_key"] ? $row["consumer_key"] : CONSUMER_KEY;
-  $cs = $row["consumer_secret"] ? $row["consumer_secret"] : CONSUMER_SECRET;
-  $at = $row["access_token"] ? $row["access_token"] : $row["oauth_token"];
-  $as = $row["access_token_secret"] ? $row["access_token_secret"] : $row["oauth_token_secret"];
-  if($log){ var_dump($ck);var_dump($cs); var_dump($at);var_dump($as);}
+  // if($log){ var_dump($ck);var_dump($cs); var_dump($at);var_dump($as);}
 
   $connection = new TwitterOAuth($ck, $cs, $at, $as);
-  if($log){ var_dump($connection); }
+  // if($log){ var_dump($connection); }
   // if($log){ var_dump($oauth_token);var_dump($oauth_token_secret);var_dump($connection); }
   $res = $connection->get('blocks/ids');
   $block_ids = $res->ids;
@@ -65,7 +65,7 @@ function retweet_exec($mysqli, $twitter_user_id, $keyword, $count,$log){
       $retweet = $connection->post('statuses/retweet/'.$tweet_id);
       $count-=1;
       insert_retweeted($mysqli, $twitter_user_id, $tweet_id);
-      if($log){ var_dump($count); }
+      // if($log){ var_dump($count); }
 
       if($count<=0){
         return;

@@ -41,11 +41,11 @@ $mysqli->close();
   <div class="container">
 
     <h2>設定</h2>
-    <div>
-      <p><a href="https://apps.twitter.com/">鍵の取得</a></p>
-      <p><a href="https://apps.twitter.com/">鍵の取得方法</a></p>
+    <p>
+      <div><a href="https://momokogumi.com/twitter-api">鍵の取得方法</a></div>
+      <div><a href="https://apps.twitter.com/">鍵の取得</a></div>
       なお、callback urlは<span>http://rtbot.ne.je</span>を指定してください
-    </div>
+    </p>
     <?php if ($row) { ?>
       <form action = "keywords/update.php" method = "get">
         <input type="hidden" name="id" value="<?php echo intval($row["id"]); ?>">
